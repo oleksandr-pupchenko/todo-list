@@ -15,15 +15,11 @@ class Task(models.Model):
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
     deadline_date = models.DateTimeField(blank=True, null=True)
-    status = models.BooleanField(default=True)
+    is_done = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
     class Meta:
-        ordering = ["status", "-created_date"]
+        ordering = ["is_done", "-created_date"]
 
     def __str__(self):
         return f"Task {self.id}"
-
-    @property
-    def is_done(self):
-        return self.status
