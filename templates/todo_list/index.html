@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>TODO list</h1>
+    {% if task_list %}
+         <ul class="list-unstyled">
+           {% for task in task_list %}
+             <li>
+               <a class="font-weight-bold">{{ task.content }}</a>
+               {% if task.is_done %}
+                 <a class="text-success">Done</a>
+               {% else %}
+                   <a class="text-danger">Not done</a>
+               {% endif %}
+               <p> Created: {{ task.created_date }}
+                 {% if task.deadline_date %} Deadline: {{ task.deadline_date }} {% endif %}
+               </p>
+               <p class="font-weight-light text-muted">Tags: {% for tag in task.tags.all %} {{ tag.name }} {% endfor %}</p>
+             </li>
+             <hr>
+           {% endfor %}
+         </ul>
+       {% else %}
+         <p class="text-start">There haven't been created any tasks yet</p>
+       {% endif %}
+{% endblock %}
