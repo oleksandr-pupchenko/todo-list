@@ -4,7 +4,7 @@ from todolist.views import (
     index,
     TaskCreateView,
     TaskUpdateView,
-    TaskDeleteView, toggle_task_status
+    TaskDeleteView, toggle_task_status, TagListView, TagCreateView, TagUpdateView, TagDeleteView
 )
 
 urlpatterns = [
@@ -28,6 +28,26 @@ urlpatterns = [
         "task/<int:pk>/toggle-status/",
         toggle_task_status,
         name="toggle_task_status"
+    ),
+    path(
+        "tags/",
+        TagListView.as_view(),
+        name="tag-list",
+    ),
+    path(
+        "tags/create/",
+        TagCreateView.as_view(),
+        name="tag-create",
+    ),
+    path(
+        "tags/<int:pk>/update/",
+        TagUpdateView.as_view(),
+        name="tag-update",
+    ),
+    path(
+        "tags/<int:pk>/delete/",
+        TagDeleteView.as_view(),
+        name="tag-delete",
     ),
  ]
 

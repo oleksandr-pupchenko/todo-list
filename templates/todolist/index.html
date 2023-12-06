@@ -23,7 +23,7 @@
                         <a href="{% url 'todolist:task-delete' pk=task.id %}">Delete</a>
                     </p>
                     {% if task.is_done %}
-                        <a href="{% url 'todolist:toggle_task_status' pk=task.id %}" class="btn btn-primary">Undo</a>
+                        <a href="{% url 'todolist:toggle_task_status' pk=task.id %}" class="btn btn-dark">Undo</a>
                     {% else %}
                         <a href="{% url 'todolist:toggle_task_status' pk=task.id %}" class="btn btn-success">Complete</a>
                     {% endif %}
