@@ -1,0 +1,69 @@
+[
+  {
+    "model": "todolist.tag",
+    "pk": 1,
+    "fields": {
+      "name": "home"
+    }
+  },
+  {
+    "model": "todolist.tag",
+    "pk": 2,
+    "fields": {
+      "name": "shop"
+    }
+  },
+  {
+    "model": "todolist.tag",
+    "pk": 3,
+    "fields": {
+      "name": "work"
+    }
+  },
+  {
+    "model": "todolist.tag",
+    "pk": 4,
+    "fields": {
+      "name": "course"
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 1,
+    "fields": {
+      "content": "Complete Django practice",
+      "created_date": "2023-12-02T10:57:00Z",
+      "deadline_date": "2023-12-02T20:00:00Z",
+      "is_done": "False",
+      "tags": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 2,
+    "fields": {
+      "content": "Buy 1 kilo of oranges and 1 pineapple",
+      "created_date": "2023-12-02T12:00:00Z",
+      "deadline_date": "2023-12-02T20:00:00Z",
+      "is_done": "False",
+      "tags": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "todolist.task",
+    "pk": 3,
+    "fields": {
+      "content": "Clean bathroom",
+      "created_date": "2023-12-02T13:00:00Z",
+      "deadline_date": "2023-12-02T21:00:00Z",
+      "is_done": "False",
+      "tags": [
+        1
+      ]
+    }
+  }
+]
