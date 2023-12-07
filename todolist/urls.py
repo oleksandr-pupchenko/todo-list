@@ -4,7 +4,12 @@ from todolist.views import (
     index,
     TaskCreateView,
     TaskUpdateView,
-    TaskDeleteView, toggle_task_status, TagListView, TagCreateView, TagUpdateView, TagDeleteView
+    TaskDeleteView,
+    toggle_task_status,
+    TagListView,
+    TagCreateView,
+    TagUpdateView,
+    TagDeleteView
 )
 
 urlpatterns = [

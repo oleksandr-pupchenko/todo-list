@@ -4,3 +4,4 @@ django-crispy-forms==2.0
 sqlparse==0.4.4
 typing_extensions==4.6.2
 crispy_bootstrap4==2022.1
+python-dotenv~=1.0.0
