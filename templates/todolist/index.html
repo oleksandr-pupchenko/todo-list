@@ -1,43 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>TODO list</h1>
-    <a href="{% url 'todolist:task-create' %}" class="btn btn-success link-to-page">
-        Create task
-    </a>
-    {% if task_list %}
-        <ul class="list-unstyled">
-            {% for task in task_list %}
-                <li>
-                    <a class="font-weight-bold">{{ task.content }}</a>
-                    {% if task.is_done %}
-                        <a class="text-success">Done</a>
-                    {% else %}
-                        <a class="text-danger">Not done</a>
-                    {% endif %}
-                    <p> Created: {{ task.created_date }}
-                        {% if task.deadline_date %} Deadline: {{ task.deadline_date }} {% endif %}
-                    </p>
-                    <p class="font-weight-light text-muted">Tags: {% for tag in task.tags.all %} {{ tag.name }} {% endfor %}
-                        <a href="{% url 'todolist:task-update' pk=task.id %}">Update</a>
-                        <a href="{% url 'todolist:task-delete' pk=task.id %}">Delete</a>
-                    </p>
-                    {% if task.is_done %}
-                        <form action="{% url 'todolist:toggle_task_status' pk=task.id %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-dark">Undo</button>
-                        </form>
-                    {% else %}
-                        <form action="{% url 'todolist:toggle_task_status' pk=task.id %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-success">Complete</button>
-                        </form>
-                    {% endif %}
-                </li>
-                <hr>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="text-start">There haven't been created any tasks yet</p>
-    {% endif %}
+  <h1>TODO list</h1>
+  <a href="{% url 'todolist:task-create' %}" class="btn btn-success link-to-page">
+    Create task
+  </a>
+  {% if task_list %}
+    <ul class="list-unstyled">
+      {% for task in task_list %}
+        <li>
+          <a class="font-weight-bold">{{ task.content }}</a>
+          {% if task.is_done %}
+            <a class="text-success">Done</a>
+          {% else %}
+            <a class="text-danger">Not done</a>
+          {% endif %}
+          <p> Created: {{ task.created_date }}
+            {% if task.deadline_date %} Deadline: {{ task.deadline_date }} {% endif %}
+          </p>
+          <p class="font-weight-light text-muted">Tags: {% for tag in task.tags.all %} {{ tag.name }} {% endfor %}
+            <a href="{% url 'todolist:task-update' pk=task.id %}">Update</a>
+            <a href="{% url 'todolist:task-delete' pk=task.id %}">Delete</a>
+          </p>
+          {% if task.is_done %}
+            <form action="{% url 'todolist:toggle_task_status' pk=task.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-dark">Undo</button>
+            </form>
+          {% else %}
+            <form action="{% url 'todolist:toggle_task_status' pk=task.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Complete</button>
+            </form>
+          {% endif %}
+        </li>
+        <hr>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-start">There haven't been created any tasks yet</p>
+  {% endif %}
 {% endblock %}
