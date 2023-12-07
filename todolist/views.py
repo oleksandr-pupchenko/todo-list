@@ -5,13 +5,10 @@ from django.views import generic
 from todolist.models import Task, Tag
 
 
-def index(request):
-    task_list = Task.objects.all()
-
-    context = {
-        "task_list": task_list,
-    }
-    return render(request, "todolist/index.html", context)
+class IndexView(generic.ListView):
+    model = Task
+    template_name = "todolist/index.html"
+    context_object_name = "task_list"
 
 
 class TaskCreateView(generic.CreateView):
@@ -31,11 +28,12 @@ class TaskDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todolist:index")
 
 
-def toggle_task_status(request, pk):
-    task = get_object_or_404(Task, id=pk)
-    task.is_done = not task.is_done
-    task.save()
-    return redirect("todolist:index")
+class ToggleTaskStatusView(generic.View):
+    def post(self, request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, id=pk)
+        task.is_done = not task.is_done
+        task.save()
+        return redirect("todolist:index")
 
 
 class TagListView(generic.ListView):

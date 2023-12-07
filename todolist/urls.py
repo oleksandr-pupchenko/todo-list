@@ -1,19 +1,19 @@
 from django.urls import path
 
 from todolist.views import (
-    index,
     TaskCreateView,
     TaskUpdateView,
     TaskDeleteView,
-    toggle_task_status,
     TagListView,
     TagCreateView,
     TagUpdateView,
-    TagDeleteView
+    TagDeleteView,
+    IndexView,
+    ToggleTaskStatusView
 )
 
 urlpatterns = [
-    path("", index, name="index"),
+    path("", IndexView.as_view(), name="index"),
     path(
         "tasks/create/",
         TaskCreateView.as_view(),
@@ -31,7 +31,7 @@ urlpatterns = [
     ),
     path(
         "task/<int:pk>/toggle-status/",
-        toggle_task_status,
+        ToggleTaskStatusView.as_view(),
         name="toggle_task_status"
     ),
     path(
